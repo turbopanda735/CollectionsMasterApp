@@ -71,7 +71,7 @@ namespace CollectionsMasterConsoleUI
 
             /*   Set Up   */
             //TODO: Create an integer List
-            var wholeNumbers = new List<int>(new int[50]);
+            var wholeNumbers = new List<int>();
 
             //TODO: Print the capacity of the list to the console
             Console.WriteLine(wholeNumbers.Capacity);
@@ -147,7 +147,7 @@ namespace CollectionsMasterConsoleUI
             foreach (var number in numberList.ToList())
             {
                 if (number % 2 != 0)
-                { 
+                {
                     numberList.Remove(number);
                 }
                 else Console.WriteLine(number);
@@ -165,9 +165,13 @@ namespace CollectionsMasterConsoleUI
 
         private static void Populater(List<int> numberList)
         {
-            Random rng = new Random();
-            for (int i = 0; i < 50; i++)
-                numberList[i] = rng.Next(0, 51);
+            while (numberList.Count <= 50)
+            {
+                Random rng = new Random();
+                var number = rng.Next(0, 51);
+                numberList.Add(number);
+            }
+            NumberPrinter(numberList);
         }
 
         private static void Populater(int[] numbers)
